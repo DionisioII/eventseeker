@@ -1,0 +1,33 @@
+<div id="tbox1">
+		<h2>Opera Lirica</h2>
+		<p>Visita la nostra sezione del sito relativa all'opera lirica per scoprire i maggiori eventi disponibili nei teatri più importanti di Italia.</p>
+		<a href=" <?= $this->url(array(
+                        'controller' => 'public',
+                        'action'     => 'events',
+                        'category'=>'3'
+                        ), 
+                        'default',true
+                    ); 
+                 ?>" class="button">Learn More</a> </div>
+	<div id="tbox2">
+		<h2>Cinema</h2>
+		<p>Visita la nostra sezione del sito relativa al Cinema per scoprire i titoli più recenti appena usciti sul grande schermo</p>
+		<a href=" <?= $this->url(array(
+                        'controller' => 'public',
+                        'action'     => 'events',
+                        'category'=>'4'
+                        ), 
+                        'default',true
+                    ); 
+                 ?>" class="button">Learn More</a> </div>
+	<div id="tbox3">
+		<h2>Mostre</h2>
+		<p>Rimani aggiornato sui maggiori eventi culturali nella tua città ed in tutta italia.Perchè la cultura è importante!</p>
+		<a href=" <?= $this->url(array(
+                        'controller' => 'public',
+                        'action'     => 'events',
+                        'category'=>'2'
+                        ), 
+                        'default',true
+                    ); 
+                 ?>" class="button">Learn More</a> </div>

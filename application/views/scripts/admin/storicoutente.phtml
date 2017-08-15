@@ -1,0 +1,41 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Gli Utenti <span class="byline"> Registrati</span></h2>
+		</div>
+		
+		<div class='prod'>
+	<table border="1">
+    <tr>
+       
+       <td>Username</td>
+       <td>Nome</td>
+       <td>Cognome</td>
+       
+       
+       </tr>
+     <?php foreach ($this->Utenti as $utente) :?>
+     	
+	<?php 
+				
+				$urlStorico=$this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'visualizzaprenotazioni',
+                        'user_id'=>$utente->usrId,
+                        ), 
+                        'default',true
+                    ); 
+				
+				
+		?>				
+	<?php echo '<tr>'.
+      '<td>'. $utente->username .'</td>'.
+      '<td>'.$utente->name.'</td>'.
+      '<td>'.$utente->surname.'</td>'.
+      '<td><a title="visualizza storico acquisti " href='.$urlStorico.'>Storico</a></td>'.
+      
+      
+   '</tr>' ?><?php endforeach ?>
+</table>
+
+</div>	
+</div>

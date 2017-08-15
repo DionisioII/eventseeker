@@ -1,0 +1,81 @@
+<div id="page" class="container">
+	<div class="title">
+		<a title="Messaggi ricevuti" href=" <?= $this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'visualizzamessaggiricevuti',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>">
+<img class="pulsante2" src="css/images/down.png">
+		<a title="Messaggi Inviati" href=" <?= $this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'visualizzamessaggiinviati',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>">
+<img class="pulsante2" src="css/images/up.png">
+		<a title="Invia nuovo Messaggio" href=" <?= $this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'inviamessaggio',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>">
+<img class="pulsante2" src="css/images/mail-plus.png">
+</a>
+		
+			<h2 >Messaggi <span class="byline">ricevuti</span></h2></br></br></br>
+		
+</div>
+<table border="0">
+    <tr>
+       <td bgcolor="#b4cbe3" width="15%">Da</td>
+       <td bgcolor="#b4cbe3" width="85%">Oggettto</td>
+       
+       
+       </tr>
+
+
+<?php foreach ($this->Messaggiricevuti as $messaggio) :?>
+	
+	
+		
+<?php   $urldisplay=$this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'displaymessage',
+                        'message_id'=>$messaggio->id_messaggio,
+                        'ricevuto'=>TRUE,
+                         ), 
+                        'default',true
+                    );
+					
+					
+		$urlcancella=$this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'deletemessage',
+                        'IdMessage'=>$messaggio->id_messaggio,
+                        'Ricevuto'=>TRUE,
+                         ), 
+                        'default',true
+                    ); 
+
+
+ $user_send=$this->usernameHelper($messaggio->usrId_send); ?>		
+<?php echo '<tr>'.
+      '<td>'.$user_send->username.'</td>'.
+      '<td><a tile="visualizza messaggio" href='.$urldisplay.'>'. $messaggio->oggetto .'</td>'.
+      
+      '<td><a tile="Cancella evento" href='.$urlcancella.'>Cancella</a></td>'.
+      
+   '</tr>' ?><?php endforeach ?>
+</table>
+
+		
+
+		
+		
+		
+
+</div>

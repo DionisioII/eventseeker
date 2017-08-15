@@ -1,0 +1,58 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Evento<span class="byline"> selezionato</span></h2>
+		</div>
+		
+		<?php function convertiDate($date)
+							{
+							$rsl = explode ('-',$date);
+							$rsl = array_reverse($rsl);
+							return implode($rsl,'/');
+							}
+					$date=convertiDate($this->event->date)
+		?>
+		<div class="prod">
+		  
+		        <div class=sidebarimg> <?php echo $this->eventImg($this->event->image, array('class' => 'imagefrm')) ?></div>
+		        <div class="info">		      
+		          <?php echo'<h1 class="title"> ' . $this->event->name . '</h1>' ?>
+		          <?php echo'<h4 class="title"> ' . $date . '</h4> Inizio:'.$this->event->start_time.'</br>';?>
+		          <?php echo'<h4 class="title">Luogo: ' . $this->event->location . '</h4>'?>
+		          <?php echo '<p class="meta">' . $this->event->description . '</p>' ?>
+		        </div>
+		        <div class="pricebox">
+		        	<?php $prices=$this->priceHelper($this->event->event_id); ?>
+		        	<p>Prezzo:</p>
+		        	<?php 
+		        	$tot=0;
+		        	foreach ($prices as $price) {
+		        		$tot=$tot+1;
+		        		echo $price->sezione.' :'.$price->prezzo.'€'.'</br>';
+						
+					} 
+						if($tot==0) echo "non sono ancora disponibili biglietti per questo evento";
+					 echo'</br></br>'?>
+		          
+		        </div>
+		        <?php $rec=1; ?>
+		       </div>
+		        <div id="comprare" ><?php if($tot==0)echo "<!--"; ?><a  title="compralo" href= <?php echo $this->url(array('controller' => 'user',
+		     										'action' => 'Prenota',
+		     										'Category'=>$this->event->cat_id,
+		     										'event_id'=>$this->event->event_id,
+		     										'nameEvent'=> $this->event->name,
+													'dateEvent'=> $this->event->date), 'default', true) ?>
+													<>
+						<img class="pulsante1" src="css/images/1376507094_shopping_trolley.png">
+						</a>
+						</div>
+		        		<?php if($tot==0)echo "-->"; ?>
+		       
+	  
+		       
+	  
+		 
+		  
+		
+
+</div>

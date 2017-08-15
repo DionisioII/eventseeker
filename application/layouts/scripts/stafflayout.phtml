@@ -1,0 +1,54 @@
+<?php echo $this->doctype() ?>
+<html>
+<head>
+	<base href="<?= $this->baseUrl().'/'; ?>" >
+	<?= $this->headMeta(); ?>
+    <?= $this->headLink(); ?>
+    <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    	<script type="text/javascript">
+	  google.load("jquery", "1");
+	</script>
+    <script type="text/javascript" src="Js/Homepage.js"></script>
+    <?= $this->headTitle(); ?>
+</head>
+
+<body>
+<div id="logo" class="container">
+	 <div id="searchForm">
+     <h2>Search Site</h2>
+     <?php
+     $searchForm = new Application_Form_Public_Searchbar();
+     $searchForm->setAction('public/search');
+     echo $searchForm;
+     ?>
+</div>
+
+	
+	<h1><a href="#">Event<span>Seeker</span></a></h1>
+	<p>Group Design by <a href="">Gruppo II</a></p>
+</div>
+<!-- end #header -->
+
+<div id="menu" class="container">
+	<?= $this->render('_topnavstafflayout.phtml')?>
+</div>
+
+<!-- end #menu -->
+
+
+	<?php echo $this->layout()->content; ?>
+
+
+<div id="footer" class="container">
+<?= $this->render('_footerlayout.phtml')?>
+</div>
+
+<!-- end #footer -->
+
+<div id="copyright" class="container">
+	<?= $this->render('_copyright.phtml')?>
+</div>
+</body>
+</html>
+

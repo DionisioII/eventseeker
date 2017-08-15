@@ -1,0 +1,14 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Here are our <span class="byline">Frequent Asked Questions</span></h2>
+		</div>
+		
+		<li>
+		<ul>
+	      <?php foreach ($this->Faqs as $faq) {
+		     echo '<li>' . $faq->question . '</br>'.$faq->answer.'</li></br></br>';
+	      }
+	      ?>
+	      </ul>
+	      </li>
+</div>

@@ -1,0 +1,24 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2 >Le Tue <span class="byline">Conversazioni</span></h2>
+		<a title="Invia nuovo Messaggio" href=" <?= $this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'inviamessaggio',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>">
+<img class="pulsante1" src="css/images/mail-plus.png">
+</a>
+
+
+<?php foreach ($this->Messaggi as $messaggio) :?>
+		<?php echo $messaggio->message; ?>
+
+		<?php endforeach ?>
+
+		
+		
+		
+</div>
+</div>

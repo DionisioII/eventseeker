@@ -1,0 +1,26 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>The Opera <span class="byline"> In Our Catalog</span></h2>
+		</div>
+		
+		<li>
+		<?php foreach ($this->Operas as $opera) :?>
+		<div class="prod">
+		  
+		        <div class=sidebarimg> <?php echo $this->eventImg($opera->opera_image, array('class' => 'imagefrm')) ?></div>
+		        <div class="info">		      
+		          <?php echo'<h1 class="title"> ' . $opera->name . '</h1>' ?>
+		          <?php echo'<h4 class="title"> ' . $opera->date . '</h4> Inizio:'.$opera->start_time.'</br>' ?>
+		          <?php echo'<h4 class="title">Luogo: ' . $opera->location . '</h4>'?>
+		          <?php echo '<p class="meta">' . $opera->description . '</p>' ?>
+		        </div>
+		        <div class="pricebox">
+		          <?php echo'prezzo platea:'. $opera->price.'€' ?>
+		          <?php echo'prezzo galleria:'. $opera->price_galleria.'€</br></br>' ?>
+		        </div>
+		        </div>
+		 
+		  
+		
+<?php endforeach ?>
+</div>

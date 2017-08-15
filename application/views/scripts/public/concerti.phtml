@@ -1,0 +1,26 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>The Concerts <span class="byline"> In Our Catalog</span></h2>
+		</div>
+		
+		<li>
+		<?php foreach ($this->Concerts as $concert) :?>
+		<div class="prod">
+		  
+		        <div class=sidebarimg> <?php echo $this->eventImg($concert->concert_image, array('class' => 'imagefrm')) ?></div>
+		        <div class="info">		      
+		          <?php echo'<h1 class="title"> ' . $concert->name . '</h1>' ?>
+		          <?php echo'<h4 class="title"> ' . $concert->date . '</h4> Inizio:'.$concert->start_time.'</br>' ?>
+		          <?php echo'<h4 class="title">Luogo: ' . $concert->location . '</h4>'?>
+		          <?php echo '<p class="meta">' . $concert->description . '</p>' ?>
+		        </div>
+		        <div class="pricebox">
+		          <?php echo'prezzo platea:'. $concert->price.'€' ?>
+		          <?php echo'prezzo tribuna:'. $concert->price_tribuna.'€</br></br>' ?>
+		        </div>
+		        </div>
+		 
+		  
+		
+<?php endforeach ?>
+</div>

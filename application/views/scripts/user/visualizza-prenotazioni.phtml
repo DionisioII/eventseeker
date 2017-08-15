@@ -1,0 +1,45 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Acquisti <span class="byline"> effettuati</span></h2>
+		</div>
+		
+	<div class='prod'>
+	<table border="1">
+    <tr>
+       <td>Categoria</td>
+       <td>Evento</td>
+       <td>Data</td>
+       <td>Tip.Biglietto</td>
+       <td>Num.Biglietti </td>
+       <td>Tip.Pagamento </td>
+       <td>Tip.Recapito </td>
+       <td>Prezzo </td>
+       
+   </tr>
+ <?php foreach ($this->Prenotazioni as $prenotazione) :?>
+ 	
+ 	<?php $urlStampa=$this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'stampa',
+                        'id_prenotazione'=>$prenotazione->prenotazione_id,
+                        ), 
+                        'default',true
+                    );  ?>
+ 	
+		<?php  $category=$this->categoryHelper($prenotazione->catId)?>
+  <?php echo '<tr>'.
+      '<td>'.$category.'</td>'.
+      '<td>'. $prenotazione->evento .'</td>'.
+      '<td>'.$prenotazione->date.'</td>'.
+      '<td>'.$prenotazione->sezione.'</td>'.
+      '<td>'.$prenotazione->num_biglietti.'</td>'.
+      '<td>'.$prenotazione->tip_pagamento.'</td>'.
+      '<td>'.$prenotazione->tip_recapito.'</td>'.
+      '<td>'.$prenotazione->prezzo.'€'. '</td>'.
+      '<td><a title="Stampa BIglietto" href='.$urlStampa.'>Stampa</a></td>'.
+      
+   '</tr>' ?><?php endforeach ?>
+</table>	
+	</div>
+
+</div>

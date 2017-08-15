@@ -1,0 +1,50 @@
+<div id="page" class="container">
+	<div class="title">
+		
+		<h2>Visualizza <span class="byline">messaggio</span></h2></br></br></br>
+		
+</div>
+<?php $echo= ($this->Ricevuto==TRUE) ? 'Da':' a'; ?>
+<table border="0">
+    <tr>
+       <td bgcolor="#b4cbe3" width="190px"><?php echo $echo?></td>
+       <td bgcolor="#b4cbe3" width="500px">Messaggio</td>
+       
+       
+       </tr>
+
+
+
+	
+	
+		
+<?php   $urlreply=$this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'reply',
+                        'usrId_send'=>$this->Messaggio->usrId_send,
+                         ), 
+                        'default',true
+                    ); 
+
+ if($this->Ricevuto==TRUE){
+ $user=$this->usernameHelper($this->Messaggio->usrId_send)->username; 	}	
+ else{if ($this->Messaggio->role=== 'staff' or $this->Messaggio->role=== 'user' ){$user=$this->Messaggio->role;}else $user=$this->usernameHelper($this->Messaggio->usrId_received)->username;} ?>
+ 
+<?php echo '<tr>'.
+      '<td>'.$user.'</td>'.
+      '<td>'. $this->Messaggio->oggetto.'</br></br>'.$this->Messaggio->message .'</td>'.
+      
+      
+      
+   '</tr>' ?>
+</table>
+</br></br>
+<?php if($this->Ricevuto==TRUE)
+echo'<a href='.$urlreply .'><button> reply</button></a>' ?>
+		
+
+		
+		
+		
+
+</div>

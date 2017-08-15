@@ -1,0 +1,83 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Statistiche <span class="byline"> sugli eventi</span></h2>
+		</div>
+		
+		<div>
+			<p>Filtra gli eventi</p>
+			<?=$this->datefilterForm; ?>
+		</br></br>
+		</div>
+		
+		<div class='prod'>
+	<table border="1">
+    <tr>
+       <td>Evento</td>
+       <td>Data</td>
+       <td>Num. Bigl. tot.</td>
+       <td>Num. Bigl. vend.</td>
+       <td>Tipologie Biglietti</td>
+       <td>Num.Tip.Bigl.tot.</td>
+       <td>Num.Tip.Bigl.vend.</td>
+       <td>%tipologia </td>
+       <td>incasso</td>
+       
+       
+       </tr>
+       
+       <?php
+			function convertiDate($date)
+							{
+							$rsl = explode ('-',$date);
+							$rsl = array_reverse($rsl);
+							return implode($rsl,'/');
+							}
+			
+			?>
+     <?php foreach ($this->Events as $event) :?>
+     <?php
+			
+			$date=convertiDate($event->date);
+			?>
+     <?php $biglietti=$this->tipologieHelper($event->event_id) ;
+     $sezioni='';
+	 $bigl_tot=0;
+	 $bigl_vend=0;
+	 $tip_bigl_tot='';
+	 $tip_bigl_vend='';
+	 $percentuale='';
+	 $incasso=0;
+     foreach($biglietti as $biglietto){$sezioni=$sezioni.$biglietto->sezione.'</br>';
+	 								   
+	 								   $bigl_tot=$bigl_tot+$biglietto->num_max;	
+	 								   $bigl_vend=$bigl_vend+$biglietto->cont_num;	
+									   $tip_bigl_tot=$tip_bigl_tot.$biglietto->num_max.'</br>';
+									   
+									   $tip_bigl_vend=$tip_bigl_vend.$biglietto->cont_num.'</br>';
+									   
+									   $per=($biglietto->cont_num*100)/$biglietto->num_max;
+									   $percentuale=$percentuale.$per.'&#37</br>';
+									  
+									   $incasso=$incasso+$biglietto->cont_num*$biglietto->prezzo;
+	 									};
+     ?>	
+     
+	
+	<?php echo '<tr>'.
+      '<td>'. $event->name .'</td>'.
+      '<td>'. $date.'</td>'.
+      '<td>'.$bigl_tot.'</td>'.
+      '<td>'.$bigl_vend.'</td>'.
+      '<td>'.$sezioni.'</td>'.
+      '<td>'.$tip_bigl_tot.'</td>'.
+      '<td>'.$tip_bigl_vend.'</td>'.
+      '<td>'.$percentuale.'</td>'.
+      '<td>'.$incasso.'€</td>'.
+            
+   '</tr>' ?><?php endforeach ?>
+</table>
+
+
+	</div>
+	
+</div>

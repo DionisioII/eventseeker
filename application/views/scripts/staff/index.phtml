@@ -1,0 +1,44 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Benvenuto <span class="byline"><?php echo $this->Staff->name.' '.$this->Staff->surname?></span></h2>
+		</div>
+		
+	<div class="prod">
+		<h4>Username:<?php echo $this->Staff->username ?></h4>
+		
+	</div>
+	
+	</br></br></br></br>
+
+	<div float="left" >
+		<a title="I tuoi messaggi" href=" <?= $this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'visualizzamessaggiricevuti',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>">
+<img class="pulsante" src="css/images/send-3.png">
+</a>
+<a title="Gestisci Eventi" href= <?= $this->url(array(
+                        'controller' => 'staff',
+                        'action'     => 'gestiscieventi',
+                        ), 
+                        'default',true
+                    ); 
+                 ?> 
+                 <>
+<img class="pulsante" src="css/images/Window-Add-icon.png">
+</a>
+<a title="Cambia i tuoi dati" href=" <?= $this->url(array(
+                        'controller' => 'staff',
+                        'action'     => 'cambioprofilo',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>"<>
+<img class="pulsante" src="css/images/send-1.png">
+</a>
+	</div>
+		
+</div>

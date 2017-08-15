@@ -1,0 +1,49 @@
+ 
+<script type="text/javascript">
+
+$(function()
+{
+    $("#username").bind('blur',function(event)
+    {
+        var value = $(this).val();
+        
+        doValidation(value);
+         
+        });
+                                                                                           
+   function doValidation(value)
+{
+	function showResponse(resp)    {
+		if (resp==true)
+        $("#username").parent().parent().find('.errors').html('disponibile');
+        else
+        $("#username").parent().parent().find('.errors').html('non disponibile');
+        
+    }
+
+	var url = '<?echo $this->url(array('controller' => 'public', 'action' => 'validatelogin',), 'default'); ?>';
+    $.ajax({
+		type: 'POST',
+		url: url,
+		data: 'value='+value,
+		dataType: 'json',
+		success: showResponse
+    });
+}
+
+});
+
+</script>
+
+<div id="page" class="container">
+<div class="static">
+ <div class="title">
+			<h2>Esegui <span class="byline">la registrazione</span></h2>
+		</div>
+ <p>Utilizza questa form per la registrazione</p>
+ 
+ <?=$this->registerForm; ?>
+</div>
+
+</div>
+</div>

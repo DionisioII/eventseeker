@@ -1,0 +1,59 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Gli Utenti <span class="byline"> Registrati</span></h2>
+		</div>
+		
+		<div class='prod'>
+	<table border="1">
+    <tr>
+       <td>Ruolo</td>
+       <td>Username</td>
+       <td>Nome</td>
+       <td>Cognome</td>
+       
+       
+       </tr>
+     <?php foreach ($this->Users as $user) :?>
+     	
+	<?php 
+				$urlCancella=$this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'eliminautente',
+                        'user_id'=>$user->usrId,
+                        ), 
+                        'default',true
+                    ); 
+				$urlModifica=$this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'modificautente',
+                        'user_id'=>$user->usrId,
+                        ), 
+                        'default',true
+                    ); 
+				
+				
+		?>				
+	<?php echo '<tr>'.
+      '<td>'.$user->role.'</td>'.
+      '<td>'. $user->username .'</td>'.
+      '<td>'.$user->name.'</td>'.
+      '<td>'.$user->surname.'</td>'.
+      '<td><a title="Modifica i dati relativi " href='.$urlModifica.'>Modifica</a></td>'.
+      '<td><a tile="Cancella utente" href='.$urlCancella.'>Cancella</a></td>'.
+      
+   '</tr>' ?><?php endforeach ?>
+</table>
+
+<a title="Aggiungi un utente" href= <?= $this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'aggiungiutente',
+                        ), 
+                        'default',true
+                    ); 
+                 ?> 
+                 <>
+<img class="pulsante" src="css/images/Window-Add-icon.png">
+</a>	
+	</div>
+	
+</div>

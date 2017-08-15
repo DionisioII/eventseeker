@@ -1,0 +1,62 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Benvenuto <span class="byline"><?php echo $this->Admin->name.' '.$this->Admin->surname?></span></h2>
+		</div>
+		
+	<div class="prod">
+		<h4>Username:<?php echo $this->Admin->username ?></h4>
+		
+	</div>
+	
+	</br></br></br></br>
+
+	<div float="left" >
+		<a title="Statistiche" href=" <?= $this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'statistiche',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>">
+<img class="pulsante" src="css/images/Statistics-icon.png">
+</a>
+<a title="Gestisci Utenti e Staff" href= <?= $this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'gestisciaccount',
+                        ), 
+                        'default',true
+                    ); 
+                 ?> 
+                 <>
+<img class="pulsante" src="css/images/folder-flower-green-icon.png">
+</a>
+<a title="Gestione Categorie" href=" <?= $this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'gestiscicategorie',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>"<>
+<img class="pulsante" src="css/images/document-archive-icon.png">
+</a>
+<a title="Gestione F.a.q." href=" <?= $this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'gestiscifaq',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>"<>
+<img class="pulsante" src="css/images/Help-icon.png">
+</a>
+<a title="Storico utenti" href=" <?= $this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'storicoutente',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>"<>
+<img class="pulsante" src="css/images/1389292538_shopping-bag.png">
+</a>
+	</div>
+		
+</div>

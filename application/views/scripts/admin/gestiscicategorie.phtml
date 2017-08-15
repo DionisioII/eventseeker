@@ -1,0 +1,55 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Le Categorie <span class="byline"> Presenti in memoria</span></h2>
+		</div>
+		
+		<div class='prod'>
+	<table border="1">
+    <tr>
+       <td>Categoria</td>
+       <td>Descrizione</td>
+       
+       
+       </tr>
+     <?php foreach ($this->Categorie as $category) :?>
+     	
+	<?php 
+				$urlCancella=$this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'cancellacategoria',
+                        'catId'=>$category->catId,
+                        ), 
+                        'default',true
+                    ); 
+				$urlModifica=$this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'modificacategoria',
+                        'catId'=>$category->catId,
+                        ), 
+                        'default',true
+                    ); 
+				
+				
+		?>				
+	<?php echo '<tr>'.
+      '<td>'.$category->name.'</td>'.
+      '<td>'. $category->desc .'</td>'.
+      '<td><a title="Modifica i dati relativi " href='.$urlModifica.'>Modifica</a></td>'.
+      '<td><a tile="Cancella evento" href='.$urlCancella.'>Cancella</a></td>'.
+      
+   '</tr>' ?><?php endforeach ?>
+</table>
+
+<a title="Aggiungi una categoria" href= <?= $this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'aggiungicategoria',
+                        ), 
+                        'default',true
+                    ); 
+                 ?> 
+                 <>
+<img class="pulsante" src="css/images/Window-Add-icon.png">
+</a>	
+	</div>
+	
+</div>

@@ -1,0 +1,53 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Gli Eventi Nella Sezione<span class="byline"> <?php echo $this->CatName?></span></h2>
+		</div>
+		
+		<?php
+			function convertiDate($date)
+							{
+							$rsl = explode ('-',$date);
+							$rsl = array_reverse($rsl);
+							return implode($rsl,'/');
+							}
+			
+			?>
+		
+		<?php foreach ($this->Events as $event):?>
+		
+		<div class="prod">
+			<?php
+			$date=convertiDate($event->date);
+			?>
+		  
+		        <div class=sidebarimg> <?php echo $this->eventImg($event->image, array('class' => 'imagefrm')) ?></div>
+		        <div class="info">	
+		              
+		          <?php echo'<h1 class="title"> ' . $event->name . '</h1>' ?>
+		          <?php					 echo'<h4 class="title"> ' . $date . '</h4> Inizio:'.$event->start_time.'</br>';?>
+		          <?php echo'<h4 class="title">Luogo: ' . $event->location . '</h4>'?>
+		          <?php echo '<p class="meta">' . $event->description . '</p>' ?>
+		        </div>
+		        <div class="pricebox">
+		        	<?php $prices=$this->priceHelper($event->event_id); ?>
+		        	<p>Prezzo:</p>
+		        	<?php foreach ($prices as $price) {
+		        		echo $price->sezione.' :'.$price->prezzo.'€'.'</br>';
+						
+					} echo'</br></br>'?>
+		          
+		        </div>
+		        <?php endforeach?>
+		        
+		        
+	  
+		        </div>
+		         <?php if($this->Events instanceof Zend_Paginator) {
+	  		echo $this->paginationControl($this->Events,'Sliding','public/_paginator.phtml');
+	  } 
+	  ?>
+		 
+		  
+		
+
+</div>

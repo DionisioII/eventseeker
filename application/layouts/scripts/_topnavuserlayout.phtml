@@ -1,0 +1,45 @@
+<ul>
+			<li class="current_page_item"><a href=" <?= $this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'index',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>" accesskey="1" title="">Profilo</a></li>
+		<li><a onclick="currentPage();" href=" <?= $this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'ourevents',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>" accesskey="1" title="">Our Events</a></li>
+		<li><a href=" <?= $this->url(array(
+                        'controller' => 'public',
+                        'action'     => 'Aboutus',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>" accesskey="2" title="">About Us</a></li>
+		<li><a href=" <?= $this->url(array(
+                        'controller' => 'public',
+                        'action'     => 'Contactus',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>" accesskey="3" title="">Contact Us</a></li>
+		<li><a href="<?= $this->url(array(
+                        'controller' => 'public',
+                        'action'     => 'Faq',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>" accesskey="4" title="">Faq</a></li>
+		<li><a href="<?= $this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'logout',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>" accesskey="5" title="">Logout</a></li>
+	</ul>
+	<div id="banner" class="container"> <img src="css/images/pic01.jpg" width="1200" height="500" alt="" /></div>

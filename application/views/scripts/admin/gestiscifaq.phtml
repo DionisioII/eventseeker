@@ -1,0 +1,55 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Le f.a.q. <span class="byline"> Presenti in memoria</span></h2>
+		</div>
+		
+		<div class='prod'>
+	<table border="1">
+    <tr>
+       <td>Domanda</td>
+       <td>Risposta</td>
+       
+       
+       </tr>
+     <?php foreach ($this->Faqs as $faq) :?>
+     	
+	<?php 
+				$urlCancella=$this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'cancellafaq',
+                        'id_faq'=>$faq->id_faq,
+                        ), 
+                        'default',true
+                    ); 
+				$urlModifica=$this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'modificafaq',
+                        'id_faq'=>$faq->id_faq,
+                        ), 
+                        'default',true
+                    ); 
+				
+				
+		?>				
+	<?php echo '<tr>'.
+      '<td>'.$faq->question.'</td>'.
+      '<td>'. $faq->answer .'</td>'.
+      '<td><a title="Modifica la f.a.q relativa " href='.$urlModifica.'>Modifica</a></td>'.
+      '<td><a tile="Cancella f.a.q." href='.$urlCancella.'>Cancella</a></td>'.
+      
+   '</tr>' ?><?php endforeach ?>
+</table>
+
+<a title="Aggiungi una f.a.q" href= <?= $this->url(array(
+                        'controller' => 'admin',
+                        'action'     => 'aggiungifaq',
+                        ), 
+                        'default',true
+                    ); 
+                 ?> 
+                 <>
+<img class="pulsante" src="css/images/Window-Add-icon.png">
+</a>	
+	</div>
+	
+</div>

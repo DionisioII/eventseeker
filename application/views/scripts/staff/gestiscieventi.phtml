@@ -1,0 +1,107 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Gli Eventi <span class="byline"> in memoria</span></h2>
+		</div>
+		
+		<div class='prod'>
+	<table border="1">
+    <tr>
+       <td>Categoria</td>
+       <td>Evento</td>
+       <td>Tipologie biglietti</td>
+       <td>Data</td>
+       
+       </tr>
+        <?php
+			function convertiDate($date)
+							{
+							$rsl = explode ('-',$date);
+							$rsl = array_reverse($rsl);
+							return implode($rsl,'/');
+							}
+			
+			?>
+       
+     <?php foreach ($this->Events as $event) :?>
+     	<?php $category=$this->categoryHelper($event->cat_id);
+		$date=convertiDate($event->date); ?>
+	<?php 
+				
+				$output='';
+				$tipologie=$this->tipologieHelper($event->event_id);
+				if ($tipologie!=null){
+					
+					 
+					
+					foreach ($tipologie as $tipologia) {
+						$urlCancellaTipologia=$this->url(array(
+                        'controller' => 'staff',
+                        'action'     => 'cancellatipologia',
+                        'event_id'=>$event->event_id,
+                        'id_ticket'=>$tipologia->id_ticket,
+                        ), 
+                        'default',true
+                    ); 
+					
+					$urlModificaTipologia=$this->url(array(
+                        'controller' => 'staff',
+                        'action'     => 'modificatipologia',
+                        'event_id'=>$event->event_id,
+                        'id_ticket'=>$tipologia->id_ticket,
+                        ), 
+                        'default',true
+                    ); 
+						
+						
+					$output = $output.$tipologia->sezione.'  <a title="Modifica questa tipologia di biglietto " href='.$urlModificaTipologia.'>Modifica</a>'.'  <a tile="Cancella questa tipologia di biglietto" href='.$urlCancellaTipologia.'>Cancella</a>'.'</br>';
+					}
+				}
+				$urlCancella=$this->url(array(
+                        'controller' => 'staff',
+                        'action'     => 'cancellaevento',
+                        'event_id'=>$event->event_id,
+                        ), 
+                        'default',true
+                    ); 
+				$urlModifica=$this->url(array(
+                        'controller' => 'staff',
+                        'action'     => 'modificaevento',
+                        'event_id'=>$event->event_id,
+                        ), 
+                        'default',true
+                    ); 
+				$urlAggiungi=$this->url(array(
+                        'controller' => 'staff',
+                        'action'     => 'aggiungitipobiglietto',
+                        'event_id'=>$event->event_id,
+                        ), 
+                        'default',true
+                    ); 
+				
+				
+		?>				
+	<?php echo '<tr>'.
+      '<td>'.$category.'</td>'.
+      '<td>'. $event->name .'</td>'.
+      '<td>'. $output.'</td>'.
+      '<td>'.$date.'</td>'.
+      '<td><a title="Modifica i dati relativi " href='.$urlModifica.'>Modifica</a></td>'.
+      '<td><a title="Cancella evento" href='.$urlCancella.'>Cancella</a></td>'.
+      '<td><a title="Aggiungi una tipologia biglietto" href='.$urlAggiungi.'>Aggiungi tipologia biglietto</a></td>'.
+      
+   '</tr>' ?><?php endforeach ?>
+</table>
+
+<a title="Aggiungi un evento" href= <?= $this->url(array(
+                        'controller' => 'staff',
+                        'action'     => 'aggiungievento',
+                        ), 
+                        'default',true
+                    ); 
+                 ?> 
+                 <>
+<img class="pulsante" src="css/images/Window-Add-icon.png">
+</a>	
+	</div>
+	
+</div>

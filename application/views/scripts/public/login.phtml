@@ -1,0 +1,25 @@
+
+
+
+
+<div id="page" class="container">
+<div class="static">
+ <div class="title">
+			<h2>Accedere <span class="byline">Al Sito</span></h2>
+		</div>
+ <p>Utilizza questa form per l'autenticazione</p>
+ <?=$this->loginForm; ?>
+</div>
+<div id="registration">
+	<?php          $urlregister=$this->url(array(
+                        'controller' => 'public',
+                        'action'     => 'register',
+                           ), 
+                        'default',true
+                    ); 
+				 ?>
+</br></br>
+	<p>Oppure esegui la <a href='<?php echo $urlregister?>'>registrazione</a></p>
+	
+</div>
+</div>

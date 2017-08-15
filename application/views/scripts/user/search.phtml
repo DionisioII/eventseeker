@@ -1,0 +1,49 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>I Risultati<span class="byline"> della ricerca</span></h2>
+		</div>
+		
+		<?php $rec=0;
+		function convertiDate($date)
+							{
+							$rsl = explode ('-',$date);
+							$rsl = array_reverse($rsl);
+							return implode($rsl,'/');
+							}
+		?>
+		
+		<?php foreach ($this->Events as $event):?>
+		<div class="prod">
+		 <?php
+		 			$urlSearch=$this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'searchview',
+                        'view_id'=>$event->event_id,
+                        ), 
+                        'default',true
+                    ); 
+					
+					
+		 		 	
+					$date=convertiDate($event->date)
+		       ?>
+		        <div class="info">		      
+		         <p class="meta">
+		          <?php echo '<a title="visualizza evento " href='.$urlSearch.'>'. $event->name.' / '.$event->location.' / '. $date . '</a></br>' ?>
+		          
+		          </p>
+		        </div>
+		        
+		          
+		        </div>
+		        <?php $rec=1; ?>
+		        <?php endforeach?>
+		        
+		       <?php if ($rec=== 0)echo '<div>La ricerca non ha prodotto alcun risultato</div>'?>
+	  
+		        </div>
+		         		 
+		  
+		
+
+</div>

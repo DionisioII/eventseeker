@@ -1,0 +1,43 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Benvenuto <span class="byline"><?php echo $this->User->name.' '.$this->User->surname?></span></h2>
+		</div>
+		
+	<div class="prod">
+		<h4>Username:<?php echo $this->User->username ?></h4>
+		
+	</div>
+
+</br></br></br></br>
+
+	<div float="left" >
+		<a title="I tuoi messaggi" href=" <?= $this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'visualizzamessaggiricevuti',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>">
+<img class="pulsante" src="css/images/send-3.png">
+</a>
+<a title="I tuoi Acquisti" href= <?= $this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'visualizzaPrenotazioni',
+                        ), 
+                        'default',true
+                    ); 
+                 ?> 
+                 <>
+<img class="pulsante" src="css/images/address-book.png">
+</a>
+<a title="Cambia i tuoi dati" href=" <?= $this->url(array(
+                        'controller' => 'user',
+                        'action'     => 'cambioprofilo',
+                        ), 
+                        'default',true
+                    ); 
+                 ?>"<>
+<img class="pulsante" src="css/images/send-1.png">
+</a>
+	</div>
+</div>

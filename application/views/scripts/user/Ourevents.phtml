@@ -1,0 +1,16 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>Here are <span class="byline">our categories</span></h2>
+		</div>
+		
+		
+		<ul>
+	      <?php foreach ($this->Categories as $category) {
+		     echo '<li><h2><a href=' . $this->url(array('controller' => 'user',
+		     										'action' => 'events','category'=>$category->catId), 'default', true) . 
+                 '>' . $category->name . '</h2></a><span>' . $category->desc . '</span></li></br></br>';
+	      }
+	      ?>
+	      </ul>
+	      </li>
+</div>

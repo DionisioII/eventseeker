@@ -1,0 +1,26 @@
+<div id="page" class="container">
+	<div class="title">
+			<h2>The Exhibitions <span class="byline"> In Our Catalog</span></h2>
+		</div>
+		
+		<li>
+		<?php foreach ($this->Expositions as $exposition) :?>
+		<div class="prod">
+		  
+		        <div class=sidebarimg> <?php echo $this->eventImg($exposition->exposition_image, array('class' => 'imagefrm')) ?></div>
+		        <div class="info">		      
+		          <?php echo'<h1 class="title"> ' . $exposition->name . '</h1>' ?>
+		          <?php echo'<h4 class="title">Dal ' . $exposition->start_time .'al'.$exposition->end_time .'</h4></br> Orario di chiusura:'.$exposition->time.'</br>' ?>
+		          <?php echo'<h4 class="title">Luogo: ' . $exposition->location . '</h4>'?>
+		          <?php echo '<p class="meta">' . $exposition->description . '</p>' ?>
+		        </div>
+		        <div class="pricebox">
+		          <?php echo'prezzo intero:'. $exposition->price.'€' ?>
+		          <?php echo'prezzo ridotto:'. $exposition->price_ridotto.'€</br></br>' ?>
+		        </div>
+		        </div>
+		 
+		  
+		
+<?php endforeach ?>
+</div>
